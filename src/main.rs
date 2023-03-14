@@ -23,9 +23,52 @@ fn main() {
             }
         }
 
-        // pub fn delete() {
+        pub fn delete_minimum(&mut self) {
+            if self.arr.is_empty() || self.size == 0 {
+                eprintln!("Heap not found, or size its zero");
+            }
 
-        // }
+            let size = self.size;
+            let last_element = self.arr[size - 1];
+
+            self.arr[0] = last_element;
+
+            self.size -= 1;
+
+            self.heapify(0);
+
+            self.arr.remove(self.size);
+        }
+
+        fn heapify(&mut self, index: usize) {
+            if self.size <= 1 {
+                return
+            } 
+
+            let left_child = 2*index + 1;
+
+            let right_child = 2*index + 2;
+
+            let mut smallest = index;
+ 
+            if left_child < self.size && self.arr[left_child] < self.arr[index] {
+                smallest = left_child;
+            }
+
+            if right_child < self.size && self.arr[right_child] < self.arr[index] {
+                smallest = right_child;
+            }
+
+            if smallest != index {
+                let temp = self.arr[index];
+                
+                self.arr[index] = self.arr[smallest];
+
+                self.arr[smallest] = temp;
+
+                self.heapify(smallest);
+            }
+        } 
     }
 
     let mut a = MinHeap {
@@ -41,6 +84,11 @@ fn main() {
     a.insert(22);
     a.insert(80);
     a.insert(16);
+    a.insert(2);
+
+    println!("{:?}", a.arr);
+
+    a.delete_minimum();
 
     println!("{:?}", a.arr);
 }
