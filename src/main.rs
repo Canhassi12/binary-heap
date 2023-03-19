@@ -68,7 +68,23 @@ fn main() {
 
                 self.heapify(smallest);
             }
-        } 
+        }
+
+        pub fn delete_element(&mut self, index: usize) {
+            self.arr[index] = std::i32::MIN;
+
+            let mut current = index;
+
+            while current > 0 && self.arr[(current - 1) / 2] > self.arr[current] {
+                let parent = (current - 1) / 2;
+
+                self.arr.swap(parent, current);
+
+                current = parent;
+            
+            }
+            self.delete_minimum();
+        }
     }
 
     let mut a = MinHeap {
@@ -76,6 +92,7 @@ fn main() {
         size: 0,
         capacity: 10,
     };
+        
 
     a.insert(12);
     a.insert(3);
@@ -89,6 +106,10 @@ fn main() {
     println!("{:?}", a.arr);
 
     a.delete_minimum();
+
+    println!("{:?}", a.arr);
+
+    a.delete_element(0);
 
     println!("{:?}", a.arr);
 }
