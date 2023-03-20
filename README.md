@@ -39,7 +39,7 @@ Binary heaps are also commonly employed in the heapsort sorting algorithm, which
 
 ## My code
 
-I did the *`Min heap`* in rust to practice, and in the code, we have a 'insert' function, to insert a new value in heap, 'delete_minimun' to delete the root of heap, and 'delete_element', to delete a specific element by index number, and the last one, 'heapify' function to organize and reach binary heap conditions.
+I did the *`Min heap`* in rust to practice, and in the code, we have a 'insert' function, to insert a new value in heap, 'delete_minimun' to delete the root of heap, and 'delete_element', to delete a specific element by index number, and the last one, 'heapify' function to organize and reach binary heap conditions. I also did tests with all possible cases.
 
 ## Reference 
 
